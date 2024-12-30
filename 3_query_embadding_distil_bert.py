@@ -1,12 +1,8 @@
-## Install transformer
-## install torch
-import torch 
+from transformers import DistilBertTokenizer, DistilBertModel
 
-from transformers import BertTokenizer, BertModel
-
-# BERT টোকেনাইজার এবং মডেল লোড করা
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained('bert-base-uncased')
+# DistilBERT টোকেনাইজার এবং মডেল লোড করা
+tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+model = DistilBertModel.from_pretrained('distilbert-base-uncased')
 # উদাহরণস্বরূপ একটি query
 query = "Who is Shahan Ahmed"
 
@@ -17,4 +13,4 @@ outputs = model(**inputs)
 
 # লাস্ট হিডেন স্টেট থেকে Query embedding
 query_embedding = outputs.last_hidden_state.mean(dim=1)
-print(query_embedding)
+print("Distil Bert Model: ", query_embedding.shape)
